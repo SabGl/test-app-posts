@@ -1,0 +1,47 @@
+<form
+  class="form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="form__name">
+    <label for="input-name"></label>
+    <input
+      type="email"
+      id="input-name"
+      placeholder="Введите @mail..."
+      formControlName="email"
+    >
+    <div
+      *ngIf="form.get('email').invalid && form.get('email')!.touched"
+      class="validation"
+    >
+      <small *ngIf="form.get('email').errors.required">Поле @mail не заполнено </small>
+      <small *ngIf="form.get('email').errors.email">Попробуйте ввести корректный @mail</small>
+    </div>
+  </div>
+
+  <div class="form__password">
+    <label for="input-password"></label>
+    <input
+      type="password"
+      id="input-password"
+      placeholder="Ваш пароль..."
+      formControlName="password"
+    >
+    <pre>{{form.get('password').errors | json}}</pre>
+    <div
+      *ngIf="form.get('password').invalid && form.get('password').touched"
+      class="validation"
+    >
+      <small *ngIf="form.get('password').errors.required">
+        Пароль не может быть пустым
+      </small>
+      <small *ngIf="form.get('password').errors.minLength">
+        Длинна должгна быть не менешь {{form.get('password').errors.minLength.requiredLength}}.
+        Сейчас количество символов {{form.get('password').errors.minLength.actualLength}}
+      </small>
+    </div>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Войти</button>
+</form>
+

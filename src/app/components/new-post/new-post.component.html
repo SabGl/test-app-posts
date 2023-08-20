@@ -1,0 +1,19 @@
+<div>
+  <p>Ваш новый пост: </p>
+  <form >
+  <input
+    type="text"
+    placeholder="Title..."
+    name="title"
+    [(ngModel)]="title"
+  >
+  <input
+    type="text"
+    placeholder="Text..."
+    name="text"
+    [(ngModel)] = "text"
+  >
+  </form>
+
+  <button type="submit" (click)="addNewPost()">Добавить пост</button>
+</div>

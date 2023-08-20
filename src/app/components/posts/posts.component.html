@@ -1,0 +1,15 @@
+<div class="posts">
+
+  <h2>Список постов</h2>
+
+  <app-new-post
+    (onAddNewPost)="updatePosts($event)"
+  ></app-new-post>
+
+  <app-post
+    *ngFor = "let p of posts"
+    [myPost]="p"
+  ></app-post>
+
+
+</div>
